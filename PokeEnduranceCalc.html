@@ -1,0 +1,238 @@
+<html>
+  <head>
+      <title>PokeEnduranceCalc</title>
+      <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="main">
+    <div>
+      <h2>ポケモン耐久値 計算</h2>
+    </div>
+    <div id="status">
+      <h4>基本ステ</h4>
+      <p class="input_muburi_status">
+        H: <input id="base_status_H" type="text" />
+      </p>
+      <p class="input_muburi_status">
+        A: <input id="base_status_A" type="text" />
+      </p>
+      <p class="input_muburi_status">
+        B: <input id="base_status_B" type="text" />
+      </p>
+      <p class="input_muburi_status">
+        C: <input id="base_status_C" type="text" />
+      </p>
+      <p class="input_muburi_status">
+        D: <input id="base_status_D" type="text" />
+      </p>
+      <p class="input_muburi_status">
+        S: <input id="base_status_S" type="text" />
+      </p>
+    </div>
+    <div id="doryokuti">
+      <h4>努力値</h4>
+      <p class="doryokuti_spinbutton">
+        <input type="number" min="0" max="252" value="0" step="1" required />
+        <button>0</button>
+        <button>252</button>
+
+      </p>
+      <p class="doryokuti_spinbutton">
+        <input type="number" min="0" max="252" value="0" step="1" required />
+        <button>0</button>
+        <button>252</button>
+      </p>
+      <p class="doryokuti_spinbutton">
+        <input type="number" min="0" max="252" value="0" step="1" required />
+        <button>0</button>
+        <button>252</button>
+      </p>
+      <p class="doryokuti_spinbutton">
+        <input type="number" min="0" max="252" value="0" step="1" required />
+        <button>0</button>
+        <button>252</button>
+      </p>
+      <p class="doryokuti_spinbutton">
+        <input type="number" min="0" max="252" value="0" step="1" required />
+        <button>0</button>
+        <button>252</button>
+      </p>
+      <p class="doryokuti_spinbutton">
+        <input type="number" min="0" max="252" value="0" step="1" required />
+        <button>0</button>
+        <button>252</button>
+      </p>
+      <p class="doryokuti_spinbutton">
+        <font>510</font>
+      </p>
+    </div>
+    <div id="seikakuhosei_plus">
+      <p class="button_hosei_plus">
+         +
+      </p>
+      <p class="button_hosei_plus">
+        <input type="radio" name="hosei_plus" value="A" />
+      </p>
+      <p class="button_hosei_plus">
+        <input type="radio" name="hosei_plus" value="B" />
+      </p>
+      <p class="button_hosei_plus">
+        <input type="radio" name="hosei_plus" value="C" />
+      </p>
+      <p class="button_hosei_plus">
+        <input type="radio" name="hosei_plus" value="D" />
+      </p>
+      <p class="button_hosei_plus">
+        <input type="radio" name="hosei_plus" value="S" />
+      </p>
+    </div>
+    <div id="seikakuhosei_minus">
+      <p class="button_hosei_minus">
+         -
+      </p>
+      <p class="button_hosei_minus">
+        <input type="radio" name="hosei_minus" value="A" />
+      </p>
+      <p class="button_hosei_minus">
+        <input type="radio" name="hosei_minus" value="B" />
+      </p>
+      <p class="button_hosei_minus">
+        <input type="radio" name="hosei_minus" value="C" />
+      </p>
+      <p class="button_hosei_minus">
+        <input type="radio" name="hosei_minus" value="D" />
+      </p>
+      <p class="button_hosei_minus">
+        <input type="radio" name="hosei_minus" value="S" />
+      </p>
+    </div>
+    <div id="jisuti">
+      <h4>実数値</h4>
+      <p class="jisuti_spinbutton">
+        <input type="number" min="0" max="252" value="0" step="4" required />
+      </p>
+      <p class="jisuti_spinbutton">
+        <input type="number" min="0" max="252" value="0" step="4" required />
+      </p>
+      <p class="jisuti_spinbutton">
+        <input type="number" min="0" max="252" value="0" step="4" required />
+      </p>
+      <p class="jisuti_spinbutton">
+        <input type="number" min="0" max="252" value="0" step="4" required />
+      </p>
+      <p class="jisuti_spinbutton">
+        <input type="number" min="0" max="252" value="0" step="4" required />
+      </p>
+      <p class="jisuti_spinbutton">
+        <input type="number" min="0" max="252" value="0" step="4" required />
+      </p>
+    </div>
+    <div id="other_option">
+
+    </div>
+
+
+    </div>
+
+  </body>
+  <style>
+    h2 {
+      margin:5px;
+    }
+    h4{
+      margin:5px;
+    }
+    h5{
+      margin:7px;
+    }
+
+    #doryokuti {
+      position: absolute;
+      top: 50px;
+      left: 100px;
+    }
+    #status {
+      position: absolute;
+      top: 50px;
+      left:20px;
+    }
+    #seikakuhosei_plus {
+      position: absolute;
+      top:80px;
+      left: 230px;
+      background-color:rgb(248, 191, 255)
+    }
+    #seikakuhosei_minus {
+      position: absolute;
+      top: 80px;
+      left: 250px;
+      background-color: rgb(187, 243, 252);
+    }
+    #jisuti {
+      position: absolute;
+      top: 50px;
+      left: 280px;
+    }
+
+    p.input_muburi_status input {
+      width: 50px;
+      height: 25px;
+    }
+    p.doryokuti_spinbutton input{
+      width: 50px;
+      height: 25px;
+    }
+    p.doryokuti_spinbutton button{
+      height:25px;
+    }
+    p.button_hosei_plus {
+      height: 25px;
+    }
+    p.button_hosei_minus {
+      height: 25px;
+    }
+    p.jisuti_spinbutton input {
+      height: 25px;
+      width: 50px;
+    }
+
+    p.input_muburi_status {
+      margin: 5px;
+    }
+    p.doryokuti_spinbutton {
+      margin: 5px;
+    }
+    p.button_hosei_plus {
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+    p.button_hosei_minus {
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+    p.doryokuti_spinbutton font {
+      margin: 5px;
+      font-size: 15px;
+    }
+    p.jisuti_spinbutton {
+      margin: 5px;
+    }
+
+
+
+  </style>
+  <script>
+    var base_status_H;
+    var base_status_A;
+    var base_status_B;
+    var base_status_C;
+    var base_status_D;
+    var base_status_S;
+
+  
+
+  </script>
+</html>
