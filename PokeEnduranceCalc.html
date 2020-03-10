@@ -14,22 +14,22 @@
     <div id="status">
       <h4>基本ステ</h4>
       <p class="input_muburi_status">
-        H: <input id="base_status_H" type="text" />
+        H: <input id="base_status_H" type="text" value="0" />
       </p>
       <p class="input_muburi_status">
-        A: <input id="base_status_A" type="text" />
+        A: <input id="base_status_A" type="text" value="0" />
       </p>
       <p class="input_muburi_status">
-        B: <input id="base_status_B" type="text" />
+        B: <input id="base_status_B" type="text" value="0" />
       </p>
       <p class="input_muburi_status">
-        C: <input id="base_status_C" type="text" />
+        C: <input id="base_status_C" type="text" value="0" />
       </p>
       <p class="input_muburi_status">
-        D: <input id="base_status_D" type="text" />
+        D: <input id="base_status_D" type="text" value="0" />
       </p>
       <p class="input_muburi_status">
-        S: <input id="base_status_S" type="text" />
+        S: <input id="base_status_S" type="text" value="0" />
       </p>
     </div>
     <div id="doryokuti">
@@ -225,14 +225,74 @@
 
   </style>
   <script>
-    var base_status_H;
-    var base_status_A;
-    var base_status_B;
-    var base_status_C;
-    var base_status_D;
-    var base_status_S;
+    //基本ステータス(努力値を振る直前のステータス値の変数)
+    var base_status_H = 0;
+    var base_status_A = 0;
+    var base_status_B = 0;
+    var base_status_C = 0;
+    var base_status_D = 0;
+    var base_status_S = 0;
 
-  
+    $('#base_status_H').change(function(){
+      var val = $(this).val();
+      if(!isNaN(Number(val))){
+        base_status_H = Number(val);
+      } else {
+        base_status_H = 0;
+        $(this).val(Number(0));
+      }
+      console.log("base H:" + base_status_H);
+    });
+    $('#base_status_A').change(function(){
+      var val = $(this).val();
+      if(!isNaN(Number(val))){
+        base_status_A = Number(val);
+      } else {
+        base_status_A = 0;
+        $(this).val(Number(0));
+      }
+      console.log("base A:" + base_status_A);
+    });
+    $('#base_status_B').change(function(){
+      var val = $(this).val();
+      if(!isNaN(Number(val))){
+        base_status_B = Number(val);
+      } else {
+        base_status_B = 0;
+        $(this).val(Number(0));
+      }
+      console.log("base B:" + base_status_B);
+    });
+    $('#base_status_C').change(function(){
+      var val = $(this).val();
+      if(!isNaN(Number(val))){
+        base_status_C = Number(val);
+      } else {
+        base_status_C = 0;
+        $(this).val(Number(0));
+      }
+      console.log("base C:" + base_status_C);
+    });
+    $('#base_status_D').change(function(){
+      var val = $(this).val();
+      if(!isNaN(Number(val))){
+        base_status_D = Number(val);
+      } else {
+        base_status_D = 0;
+        $(this).val(Number(0));
+      }
+      console.log("base D:" + base_status_D);
+    });
+    $('#base_status_S').change(function(){
+      var val = $(this).val();
+      if(!isNaN(Number(val))){
+        base_status_S = Number(val);
+      } else {
+        base_status_S = 0;
+        $(this).val(Number(0));
+      }
+      console.log("base S:" + base_status_S);
+    });
 
   </script>
 </html>
