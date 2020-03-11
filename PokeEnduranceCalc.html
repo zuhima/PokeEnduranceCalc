@@ -243,13 +243,7 @@
     var syuzokuti_C = 0;
     var syuzokuti_D = 0;
     var syuzokuti_S = 0;
-    //基本ステータス(努力値を振る直前のステータス値の変数)
-    // var base_status_H = 0;
-    // var base_status_A = 0;
-    // var base_status_B = 0;
-    // var base_status_C = 0;
-    // var base_status_D = 0;
-    // var base_status_S = 0;
+
     //努力値を振った後の実数値を格納する変数
     var jisuti_status_H = 0;
     var jisuti_status_A = 0;
@@ -332,86 +326,6 @@
       jisuti_status_S = calcJisuti_ABCDS(Number($('#doryokuti_text_S').val()), Number(syuzokuti_S), Number(seikaku_hosei_S));
       $('#jisuti_text_S').val(jisuti_status_S);
     })
-
-    //基本ステータス入力時の動作
-    // $('#base_status_H').change(function(){
-    //   var val = $(this).val();
-    //   if(!isNaN(Number(val))){
-    //     base_status_H = Number(val);
-    //   } else {
-    //     base_status_H = 0;
-    //     $(this).val(Number(0));
-    //   }
-    //   $('#jisuti_text_H').val(base_status_H);
-    //   $('#base_status_H').val(base_status_H);
-    //   jisuti_status_H = base_status_H;
-    //   // console.log("base H:" + base_status_H);
-    // });
-    // $('#base_status_A').change(function(){
-    //   var val = $(this).val();
-    //   if(!isNaN(Number(val))){
-    //     base_status_A = Number(val);
-    //   } else {
-    //     base_status_A = 0;
-    //     $(this).val(Number(0));
-    //   }
-    //   $('#jisuti_text_A').val(base_status_A);
-    //   $('#base_status_A').val(base_status_A);
-    //   jisuti_status_A = base_status_A;
-    //   // console.log("base A:" + base_status_A);
-    // });
-    // $('#base_status_B').change(function(){
-    //   var val = $(this).val();
-    //   if(!isNaN(Number(val))){
-    //     base_status_B = Number(val);
-    //   } else {
-    //     base_status_B = 0;
-    //     $(this).val(Number(0));
-    //   }
-    //   $('#jisuti_text_B').val(base_status_B);
-    //   $('#base_status_B').val(base_status_B);
-    //   jisuti_status_B = base_status_B;
-    //   // console.log("base B:" + base_status_B);
-    // });
-    // $('#base_status_C').change(function(){
-    //   var val = $(this).val();
-    //   if(!isNaN(Number(val))){
-    //     base_status_C = Number(val);
-    //   } else {
-    //     base_status_C = 0;
-    //     $(this).val(Number(0));
-    //   }
-    //   $('#jisuti_text_C').val(base_status_C);
-    //   $('#base_status_C').val(base_status_C);
-    //   jisuti_status_C = base_status_C;
-    //   // console.log("base C:" + base_status_C);
-    // });
-    // $('#base_status_D').change(function(){
-    //   var val = $(this).val();
-    //   if(!isNaN(Number(val))){
-    //     base_status_D = Number(val);
-    //   } else {
-    //     base_status_D = 0;
-    //     $(this).val(Number(0));
-    //   }
-    //   $('#jisuti_text_D').val(base_status_D);
-    //   $('#base_status_D').val(base_status_D);
-    //   jisuti_status_D = base_status_D;
-    //   // console.log("base D:" + base_status_D);
-    // });
-    // $('#base_status_S').change(function(){
-    //   var val = $(this).val();
-    //   if(!isNaN(Number(val))){
-    //     base_status_S = Number(val);
-    //   } else {
-    //     base_status_S = 0;
-    //     $(this).val(Number(0));
-    //   }
-    //   $('#jisuti_text_S').val(base_status_S);
-    //   $('#base_status_S').val(base_status_S);
-    //   jisuti_status_S = base_status_S;
-    //   // console.log("base S:" + base_status_S);
-    // });
 
     //努力値が変更したときの動作
     $('#doryokuti_text_H').change(function(){
