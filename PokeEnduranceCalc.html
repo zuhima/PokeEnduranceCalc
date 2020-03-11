@@ -73,19 +73,19 @@
          +
       </p>
       <p class="button_hosei_plus">
-        <input type="checkbox" name="hosei_plus" value="A" />
+        <input type="checkbox" name="hosei_plus" class="check_hosei_plus check_hosei_A hosei_checkbox" value="A" />
       </p>
       <p class="button_hosei_plus">
-        <input type="checkbox" name="hosei_plus" value="B" />
+        <input type="checkbox" name="hosei_plus" class="check_hosei_plus check_hosei_B hosei_checkbox" value="B" />
       </p>
       <p class="button_hosei_plus">
-        <input type="checkbox" name="hosei_plus" value="C" />
+        <input type="checkbox" name="hosei_plus" class="check_hosei_plus check_hosei_C hosei_checkbox" value="C" />
       </p>
       <p class="button_hosei_plus">
-        <input type="checkbox" name="hosei_plus" value="D" />
+        <input type="checkbox" name="hosei_plus" class="check_hosei_plus check_hosei_D hosei_checkbox" value="D" />
       </p>
       <p class="button_hosei_plus">
-        <input type="checkbox" name="hosei_plus" value="S" />
+        <input type="checkbox" name="hosei_plus" class="check_hosei_plus check_hosei_S hosei_checkbox" value="S" />
       </p>
     </div>
     <div id="seikakuhosei_minus">
@@ -93,19 +93,19 @@
          -
       </p>
       <p class="button_hosei_minus">
-        <input type="checkbox" name="hosei_minus" value="A" />
+        <input type="checkbox" name="hosei_minus" class="check_hosei_minus check_hosei_A hosei_checkbox" value="A" />
       </p>
       <p class="button_hosei_minus">
-        <input type="checkbox" name="hosei_minus" value="B" />
+        <input type="checkbox" name="hosei_minus" class="check_hosei_minus check_hosei_B hosei_checkbox" value="B" />
       </p>
       <p class="button_hosei_minus">
-        <input type="checkbox" name="hosei_minus" value="C" />
+        <input type="checkbox" name="hosei_minus" class="check_hosei_minus check_hosei_C hosei_checkbox" value="C" />
       </p>
       <p class="button_hosei_minus">
-        <input type="checkbox" name="hosei_minus" value="D" />
+        <input type="checkbox" name="hosei_minus" class="check_hosei_minus check_hosei_D hosei_checkbox" value="D" />
       </p>
       <p class="button_hosei_minus">
-        <input type="checkbox" name="hosei_minus" value="S" />
+        <input type="checkbox" name="hosei_minus" class="check_hosei_minus check_hosei_S hosei_checkbox" value="S" />
       </p>
     </div>
     <div id="jisuti">
@@ -455,9 +455,300 @@
       $('#jisuti_text_S').val(jisuti_status_S);
     });
 
-    //性格情報補正のラジオボタン選択時
+    //性格補正チェックボックスの挙動 / 排他的処理
+    $('.check_hosei_plus').click(function(){
+      if($(this).prop('checked')){
+        $('.check_hosei_plus').prop('checked', false);
+        $(this).prop('checked', true);
+      }
+    });
+    $('.check_hosei_minus').click(function(){
+      if($(this).prop('checked')){
+        $('.check_hosei_minus').prop('checked', false);
+        $(this).prop('checked', true);
+      }
+    });
+    $('.check_hosei_A').click(function(){
+      if($(this).prop('checked')){
+        $('.check_hosei_A').prop('checked', false);
+        $(this).prop('checked', true);
+      }
+    });
+    $('.check_hosei_B').click(function(){
+      if($(this).prop('checked')){
+        $('.check_hosei_B').prop('checked', false);
+        $(this).prop('checked', true);
+      }
+    });
+    $('.check_hosei_C').click(function(){
+      if($(this).prop('checked')){
+        $('.check_hosei_C').prop('checked', false);
+        $(this).prop('checked', true);
+      }
+    });
+    $('.check_hosei_D').click(function(){
+      if($(this).prop('checked')){
+        $('.check_hosei_D').prop('checked', false);
+        $(this).prop('checked', true);
+      }
+    });
+    $('.check_hosei_S').click(function(){
+      if($(this).prop('checked')){
+        $('.check_hosei_S').prop('checked', false);
+        $(this).prop('checked', true);
+      }
+    });
 
-
+    //性格補正変数の更新
+    $('.hosei_checkbox').change(function(){
+      var plus = $('.check_hosei_plus:checked').val();
+      var minus = $('.check_hosei_minus:checked').val();
+      // console.log('plus:' + plus + ' minus:' + minus);
+      switch(plus){
+        case "A":
+          switch(minus){
+            case "B":
+                seikaku_hosei_A = 1.1;
+                seikaku_hosei_B = 0.9;
+                seikaku_hosei_C = 1;
+                seikaku_hosei_D = 1;
+                seikaku_hosei_S = 1;
+            break;
+            case "C":
+                seikaku_hosei_A = 1.1;
+                seikaku_hosei_B = 1;
+                seikaku_hosei_C = 0.9;
+                seikaku_hosei_D = 1;
+                seikaku_hosei_S = 1;
+            break;
+            case "D":
+                seikaku_hosei_A = 1.1;
+                seikaku_hosei_B = 1;
+                seikaku_hosei_C = 1;
+                seikaku_hosei_D = 0.9;
+                seikaku_hosei_S = 1;
+            break;
+            case "S":
+                seikaku_hosei_A = 1.1;
+                seikaku_hosei_B = 1;
+                seikaku_hosei_C = 1;
+                seikaku_hosei_D = 1;
+                seikaku_hosei_S = 0.9;
+            break;
+            default:
+                seikaku_hosei_A = 1.1;
+                seikaku_hosei_B = 1;
+                seikaku_hosei_C = 1;
+                seikaku_hosei_D = 1;
+                seikaku_hosei_S = 1;
+            break;
+          }
+        break;
+        case "B":
+          switch(minus){
+            case "A":
+              seikaku_hosei_A = 0.9;
+              seikaku_hosei_B = 1.1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1;
+            break;
+            case "C":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1.1;
+              seikaku_hosei_C = 0.9;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1;
+            break;
+            case "D":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1.1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 0.9;
+              seikaku_hosei_S = 1;
+            break;
+            case "S":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1.1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 0.9;
+            break;
+            default:
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1.1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1;
+            break;
+          }
+        break;
+        case "C":
+          switch(minus){
+            case "A":
+              seikaku_hosei_A = 0.9;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1.1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1;
+            break;
+            case "B":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 0.9;
+              seikaku_hosei_C = 1.1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1;
+            break;
+            case "D":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1.1;
+              seikaku_hosei_D = 0.9;
+              seikaku_hosei_S = 1;
+            break;
+            case "S":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1.1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 0.9;
+            break;
+            default:
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1.1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1;
+            break;
+          }
+        break;
+        case "D":
+          switch(minus){
+            case "A":
+              seikaku_hosei_A = 0.9;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1.1;
+              seikaku_hosei_S = 1;
+            break;
+            case "B":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 0.9;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1.1;
+              seikaku_hosei_S = 1;
+            break;
+            case "C":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 0.9;
+              seikaku_hosei_D = 1.1;
+              seikaku_hosei_S = 1;
+            break;
+            case "S":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1.1;
+              seikaku_hosei_S = 0.9;
+            break;
+            default:
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1.1;
+              seikaku_hosei_S = 1;
+            break;
+          }
+        break;
+        case "S":
+          switch(minus){
+            case "A":
+              seikaku_hosei_A = 0.9;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1.1;
+            break;
+            case "B":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 0.9;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1.1;
+            break;
+            case "C":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 0.9;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1.1;
+            break;
+            case "D":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 0.9;
+              seikaku_hosei_S = 1.1;
+            break;
+            default:
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1.1;
+            break;
+          }
+        break;
+        default:
+          switch(minus){
+            case "A":
+              seikaku_hosei_A = 0.9;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1;
+            break;
+            case "B":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 0.9;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1;
+            break;
+            case "C":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 0.9;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1;
+            break;
+            case "D":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 0.9;
+              seikaku_hosei_S = 1;
+            break;
+            case "S":
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 0.9;
+            break;
+            default:
+              seikaku_hosei_A = 1;
+              seikaku_hosei_B = 1;
+              seikaku_hosei_C = 1;
+              seikaku_hosei_D = 1;
+              seikaku_hosei_S = 1;
+            break;
+          }
+        break;
+      }
+      // console.log(seikaku_hosei_A +':'+ seikaku_hosei_B +':'+ seikaku_hosei_C +':'+ seikaku_hosei_D +':'+ seikaku_hosei_S);
+    })
 
   </script>
 </html>
