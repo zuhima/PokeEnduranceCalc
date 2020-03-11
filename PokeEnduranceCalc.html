@@ -73,19 +73,19 @@
          +
       </p>
       <p class="button_hosei_plus">
-        <input type="radio" name="hosei_plus" value="A" />
+        <input type="checkbox" name="hosei_plus" value="A" />
       </p>
       <p class="button_hosei_plus">
-        <input type="radio" name="hosei_plus" value="B" />
+        <input type="checkbox" name="hosei_plus" value="B" />
       </p>
       <p class="button_hosei_plus">
-        <input type="radio" name="hosei_plus" value="C" />
+        <input type="checkbox" name="hosei_plus" value="C" />
       </p>
       <p class="button_hosei_plus">
-        <input type="radio" name="hosei_plus" value="D" />
+        <input type="checkbox" name="hosei_plus" value="D" />
       </p>
       <p class="button_hosei_plus">
-        <input type="radio" name="hosei_plus" value="S" />
+        <input type="checkbox" name="hosei_plus" value="S" />
       </p>
     </div>
     <div id="seikakuhosei_minus">
@@ -93,19 +93,19 @@
          -
       </p>
       <p class="button_hosei_minus">
-        <input type="radio" name="hosei_minus" value="A" />
+        <input type="checkbox" name="hosei_minus" value="A" />
       </p>
       <p class="button_hosei_minus">
-        <input type="radio" name="hosei_minus" value="B" />
+        <input type="checkbox" name="hosei_minus" value="B" />
       </p>
       <p class="button_hosei_minus">
-        <input type="radio" name="hosei_minus" value="C" />
+        <input type="checkbox" name="hosei_minus" value="C" />
       </p>
       <p class="button_hosei_minus">
-        <input type="radio" name="hosei_minus" value="D" />
+        <input type="checkbox" name="hosei_minus" value="D" />
       </p>
       <p class="button_hosei_minus">
-        <input type="radio" name="hosei_minus" value="S" />
+        <input type="checkbox" name="hosei_minus" value="S" />
       </p>
     </div>
     <div id="jisuti">
@@ -385,51 +385,78 @@
     $('#doryokuti_reset_H').click(function(){
       $('#doryokuti_text_H').val(Number(0));
       $('#remain').text(Number(calcRemain()));
+      calcJisuti_H(Number(0));
+      $('#jisuti_text_H').val(jisuti_status_H);
     });
     $('#doryokuti_kyokuburi_H').click(function(){
       $('#doryokuti_text_H').val(Number(252));
       $('#remain').text(Number(calcRemain()));
+      calcJisuti_H(Number(252));
+      $('#jisuti_text_H').val(jisuti_status_H);
     });
     $('#doryokuti_reset_A').click(function(){
       $('#doryokuti_text_A').val(Number(0));
       $('#remain').text(Number(calcRemain()));
+      jisuti_status_A = calcJisuti_ABCDS(Number(0), Number(syuzokuti_A), Number(seikaku_hosei_A));
+      $('#jisuti_text_A').val(jisuti_status_A);
     });
     $('#doryokuti_kyokuburi_A').click(function(){
       $('#doryokuti_text_A').val(Number(252));
       $('#remain').text(Number(calcRemain()));
+      jisuti_status_A = calcJisuti_ABCDS(Number(252), Number(syuzokuti_A), Number(seikaku_hosei_A));
+      $('#jisuti_text_A').val(jisuti_status_A);
     });
     $('#doryokuti_reset_B').click(function(){
       $('#doryokuti_text_B').val(Number(0));
       $('#remain').text(Number(calcRemain()));
+      jisuti_status_B = calcJisuti_ABCDS(Number(0), Number(syuzokuti_B), Number(seikaku_hosei_B));
+      $('#jisuti_text_B').val(jisuti_status_B);
     });
     $('#doryokuti_kyokuburi_B').click(function(){
       $('#doryokuti_text_B').val(Number(252));
       $('#remain').text(Number(calcRemain()));
+      jisuti_status_B = calcJisuti_ABCDS(Number(252), Number(syuzokuti_B), Number(seikaku_hosei_B));
+      $('#jisuti_text_B').val(jisuti_status_B);
     });
     $('#doryokuti_reset_C').click(function(){
       $('#doryokuti_text_C').val(Number(0));
       $('#remain').text(Number(calcRemain()));
+      jisuti_status_C = calcJisuti_ABCDS(Number(0), Number(syuzokuti_C), Number(seikaku_hosei_C));
+      $('#jisuti_text_C').val(jisuti_status_C);
     });
     $('#doryokuti_kyokuburi_C').click(function(){
       $('#doryokuti_text_C').val(Number(252));
       $('#remain').text(Number(calcRemain()));
+      jisuti_status_C = calcJisuti_ABCDS(Number(252), Number(syuzokuti_C), Number(seikaku_hosei_C));
+      $('#jisuti_text_C').val(jisuti_status_C);
     });
     $('#doryokuti_reset_D').click(function(){
       $('#doryokuti_text_D').val(Number(0));
       $('#remain').text(Number(calcRemain()));
+      jisuti_status_D = calcJisuti_ABCDS(Number(0), Number(syuzokuti_D), Number(seikaku_hosei_D));
+      $('#jisuti_text_D').val(jisuti_status_D);
     });
     $('#doryokuti_kyokuburi_D').click(function(){
       $('#doryokuti_text_D').val(Number(252));
       $('#remain').text(Number(calcRemain()));
+      jisuti_status_D = calcJisuti_ABCDS(Number(252), Number(syuzokuti_D), Number(seikaku_hosei_D));
+      $('#jisuti_text_D').val(jisuti_status_D);
     });
     $('#doryokuti_reset_S').click(function(){
       $('#doryokuti_text_S').val(Number(0));
       $('#remain').text(Number(calcRemain()));
+      jisuti_status_S = calcJisuti_ABCDS(Number(0), Number(syuzokuti_S), Number(seikaku_hosei_S));
+      $('#jisuti_text_S').val(jisuti_status_S);
     });
     $('#doryokuti_kyokuburi_S').click(function(){
       $('#doryokuti_text_S').val(Number(252));
       $('#remain').text(Number(calcRemain()));
+      jisuti_status_S = calcJisuti_ABCDS(Number(252), Number(syuzokuti_S), Number(seikaku_hosei_S));
+      $('#jisuti_text_S').val(jisuti_status_S);
     });
+
+    //性格情報補正のラジオボタン選択時
+
 
 
   </script>
