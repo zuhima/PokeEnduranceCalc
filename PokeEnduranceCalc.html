@@ -134,13 +134,13 @@
     </div>
     <div id="endurance_orig" style="padding: 10px; width:300px; height: 100px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
       <p>
-        H:<font id="endurance_status_H">0</font>
+        H:<font id="endurance_status_H">0(0)</font>
       </p>
       <p>
-        B:<font id="endurance_status_B">0</font>
+        B:<font id="endurance_status_B">0(0)</font>
       </p>
       <p>
-        D:<font id="endurance_status_D">0</font>
+        D:<font id="endurance_status_D">0(0)</font>
       </p>
       <div>
         <p>
@@ -156,13 +156,13 @@
     </div>
     <div id="endurance_copy" style="padding: 10px; width:300px; height: 100px; margin-bottom: 10px; border: 1px dotted rgb(69, 104, 199); border-radius: 10px;">
       <p>
-        H:<font id="endurance_status_H_copy">0</font>
+        H:<font id="endurance_status_H_copy">0(0)</font>
       </p>
       <p>
-        B:<font id="endurance_status_B_copy">0</font>
+        B:<font id="endurance_status_B_copy">0(0)</font>
       </p>
       <p>
-        D:<font id="endurance_status_D_copy">0</font>
+        D:<font id="endurance_status_D_copy">0(0)</font>
       </p>
       <div>
         <p>
@@ -184,6 +184,9 @@
 
   </body>
   <style>
+    body {
+      background-color: rgb(255, 220, 200);
+    }
     h2 {
       margin:5px;
     }
@@ -197,7 +200,7 @@
     #doryokuti {
       position: absolute;
       top: 50px;
-      left: 145px;
+      left: 165px;
     }
     #status {
       position: absolute;
@@ -207,49 +210,51 @@
     #seikakuhosei_plus {
       position: absolute;
       top:80px;
-      left: 275px;
+      left: 300px;
       background-color:rgb(248, 191, 255)
     }
     #seikakuhosei_minus {
       position: absolute;
       top: 80px;
-      left: 295px;
+      left: 320px;
       background-color: rgb(187, 243, 252);
     }
     #jisuti {
       position: absolute;
       top: 50px;
-      left: 85px;
+      left: 105px;
     }
     #syuzokuti {
       position: absolute;
       top: 50px;
-      left: 15px;
+      left: 35px;
     }
     #endurance_orig {
+      background-color: rgb(255, 255, 255);
       position: absolute;
       top: 325px;
-      left: 50px;
+      left: 30px;
     }
     div#endurance_orig div {
       position: relative;
       bottom: 87px;
-      left: 80px
+      left: 140px
     }
     #endurance_copy {
+      background-color: rgb(255, 255, 255);
       position: absolute;
       top: 500px;
-      left: 50px
+      left: 30px
     }
     div#endurance_copy div {
       position: relative;
       bottom: 87px;
-      left: 80px;
+      left: 140px;
     }
     #copy_button_space {
       position: absolute;
       top: 460px;
-      left: 180px;
+      left: 160px;
     }
 
     p.input_muburi_status input {
@@ -337,6 +342,10 @@
     var seikaku_hosei_D = 1;
     var seikaku_hosei_S = 1;
 
+    //表示用変数
+    var hosei_B = '';
+    var hosei_D = '';
+
     //種族値入力時の動作
     $('#syuzokuti_text_H').change(function(){
       var val = $(this).val();
@@ -348,7 +357,9 @@
       $(this).val(syuzokuti_H);
       calcJisuti_H(Number($('#doryokuti_text_H').val()));
       $('#jisuti_text_H').val(jisuti_status_H);
-      $('#endurance_status_H').text(jisuti_status_H);
+      $('#endurance_status_H').text(
+        jisuti_status_H + '(' + $('#doryokuti_text_H').val() + ')'
+      );
       calcAllEnduranceResult();
     })
     $('#syuzokuti_text_A').change(function(){
@@ -372,7 +383,9 @@
       $(this).val(syuzokuti_B);
       jisuti_status_B = calcJisuti_ABCDS(Number($('#doryokuti_text_B').val()), Number(syuzokuti_B), Number(seikaku_hosei_B));
       $('#jisuti_text_B').val(jisuti_status_B);
-      $('#endurance_status_B').text(jisuti_status_B);
+      $('#endurance_status_B').text(
+        jisuti_status_B + '(' + $('#doryokuti_text_B').val() + hosei_B + ')'
+      );
       calcAllEnduranceResult();
     })
     $('#syuzokuti_text_C').change(function(){
@@ -396,7 +409,9 @@
       $(this).val(syuzokuti_D);
       jisuti_status_D = calcJisuti_ABCDS(Number($('#doryokuti_text_D').val()), Number(syuzokuti_D), Number(seikaku_hosei_D));
       $('#jisuti_text_D').val(jisuti_status_D);
-      $('#endurance_status_D').text(jisuti_status_D);
+      $('#endurance_status_D').text(
+        jisuti_status_D + '(' + $('#doryokuti_text_D').val() + hosei_D + ')'
+      );
       calcAllEnduranceResult();
     })
     $('#syuzokuti_text_S').change(function(){
@@ -417,7 +432,9 @@
       var doryokuti = $(this).val();
       calcJisuti_H(Number(doryokuti));
       $('#jisuti_text_H').val(Number(jisuti_status_H));
-      $('#endurance_status_H').text(jisuti_status_H);
+      $('#endurance_status_H').text(
+        jisuti_status_H + '(' + $('#doryokuti_text_H').val()  + ')'
+      );
       calcAllEnduranceResult();
     });
     $('#doryokuti_text_A').change(function(){
@@ -431,7 +448,9 @@
       var doryokuti = $(this).val();
       jisuti_status_B = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_B), Number(seikaku_hosei_B));
       $('#jisuti_text_B').val(jisuti_status_B);
-      $('#endurance_status_B').text(jisuti_status_B);
+      $('#endurance_status_B').text(
+        jisuti_status_B + '(' + $('#doryokuti_text_B').val() + hosei_B + ')'
+      );
       calcAllEnduranceResult();
     });
     $('#doryokuti_text_C').change(function(){
@@ -445,7 +464,9 @@
       var doryokuti = $(this).val();
       jisuti_status_D = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_D), Number(seikaku_hosei_D));
       $('#jisuti_text_D').val(jisuti_status_D);
-      $('#endurance_status_D').text(jisuti_status_D);
+      $('#endurance_status_D').text(
+        jisuti_status_D + '(' + $('#doryokuti_text_D').val() + hosei_D + ')'
+      );
       calcAllEnduranceResult();
     });
     $('#doryokuti_text_S').change(function(){
@@ -478,7 +499,9 @@
       $('#remain').text(Number(calcRemain()));
       calcJisuti_H(Number(0));
       $('#jisuti_text_H').val(jisuti_status_H);
-      $('#endurance_status_H').text(jisuti_status_H);
+      $('#endurance_status_H').text(
+        jisuti_status_H + '(' + $('#doryokuti_text_H').val() + ')'
+      );
       calcAllEnduranceResult();
     });
     $('#doryokuti_kyokuburi_H').click(function(){
@@ -486,7 +509,9 @@
       $('#remain').text(Number(calcRemain()));
       calcJisuti_H(Number(252));
       $('#jisuti_text_H').val(jisuti_status_H);
-      $('#endurance_status_H').text(jisuti_status_H);
+      $('#endurance_status_H').text(
+        jisuti_status_H + '(' + $('#doryokuti_text_H').val() + ')'
+      );
       calcAllEnduranceResult();
     });
     $('#doryokuti_reset_A').click(function(){
@@ -506,7 +531,9 @@
       $('#remain').text(Number(calcRemain()));
       jisuti_status_B = calcJisuti_ABCDS(Number(0), Number(syuzokuti_B), Number(seikaku_hosei_B));
       $('#jisuti_text_B').val(jisuti_status_B);
-      $('#endurance_status_B').text(jisuti_status_B);
+      $('#endurance_status_B').text(
+        jisuti_status_B + '(' + $('#doryokuti_text_B').val() + hosei_B + ')'
+      );
       calcAllEnduranceResult();
     });
     $('#doryokuti_kyokuburi_B').click(function(){
@@ -514,7 +541,9 @@
       $('#remain').text(Number(calcRemain()));
       jisuti_status_B = calcJisuti_ABCDS(Number(252), Number(syuzokuti_B), Number(seikaku_hosei_B));
       $('#jisuti_text_B').val(jisuti_status_B);
-      $('#endurance_status_B').text(jisuti_status_B);
+      $('#endurance_status_B').text(
+        jisuti_status_B + '(' + $('#doryokuti_text_B').val() + hosei_B + ')'
+      );
       calcAllEnduranceResult();
     });
     $('#doryokuti_reset_C').click(function(){
@@ -534,7 +563,9 @@
       $('#remain').text(Number(calcRemain()));
       jisuti_status_D = calcJisuti_ABCDS(Number(0), Number(syuzokuti_D), Number(seikaku_hosei_D));
       $('#jisuti_text_D').val(jisuti_status_D);
-      $('#endurance_status_D').text(jisuti_status_D);
+      $('#endurance_status_D').text(
+        jisuti_status_D + '(' + $('#doryokuti_text_D').val() + hosei_D + ')'
+      );
       calcAllEnduranceResult();
     });
     $('#doryokuti_kyokuburi_D').click(function(){
@@ -542,7 +573,9 @@
       $('#remain').text(Number(calcRemain()));
       jisuti_status_D = calcJisuti_ABCDS(Number(252), Number(syuzokuti_D), Number(seikaku_hosei_D));
       $('#jisuti_text_D').val(jisuti_status_D);
-      $('#endurance_status_D').text(jisuti_status_D);
+      $('#endurance_status_D').text(
+        jisuti_status_D + '(' + $('#doryokuti_text_D').val() + hosei_D + ')'
+      );
       calcAllEnduranceResult();
     });
     $('#doryokuti_reset_S').click(function(){
@@ -611,6 +644,8 @@
         case "A":
           switch(minus){
             case "B":
+                hosei_B = '↓';
+                hosei_D = '';
                 seikaku_hosei_A = 1.1;
                 seikaku_hosei_B = 0.9;
                 seikaku_hosei_C = 1;
@@ -618,6 +653,8 @@
                 seikaku_hosei_S = 1;
             break;
             case "C":
+                hosei_B = '';
+                hosei_D = '';
                 seikaku_hosei_A = 1.1;
                 seikaku_hosei_B = 1;
                 seikaku_hosei_C = 0.9;
@@ -625,6 +662,8 @@
                 seikaku_hosei_S = 1;
             break;
             case "D":
+                hosei_B = '';
+                hosei_D = '↓';
                 seikaku_hosei_A = 1.1;
                 seikaku_hosei_B = 1;
                 seikaku_hosei_C = 1;
@@ -632,6 +671,8 @@
                 seikaku_hosei_S = 1;
             break;
             case "S":
+                hosei_B = '';
+                hosei_D = '';
                 seikaku_hosei_A = 1.1;
                 seikaku_hosei_B = 1;
                 seikaku_hosei_C = 1;
@@ -639,6 +680,8 @@
                 seikaku_hosei_S = 0.9;
             break;
             default:
+                hosei_B = '';
+                hosei_D = '';
                 seikaku_hosei_A = 1.1;
                 seikaku_hosei_B = 1;
                 seikaku_hosei_C = 1;
@@ -650,6 +693,8 @@
         case "B":
           switch(minus){
             case "A":
+              hosei_B = '↑';
+              hosei_D = '';
               seikaku_hosei_A = 0.9;
               seikaku_hosei_B = 1.1;
               seikaku_hosei_C = 1;
@@ -657,6 +702,8 @@
               seikaku_hosei_S = 1;
             break;
             case "C":
+              hosei_B = '↑';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1.1;
               seikaku_hosei_C = 0.9;
@@ -664,6 +711,8 @@
               seikaku_hosei_S = 1;
             break;
             case "D":
+              hosei_B = '↑';
+              hosei_D = '↓';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1.1;
               seikaku_hosei_C = 1;
@@ -671,6 +720,8 @@
               seikaku_hosei_S = 1;
             break;
             case "S":
+              hosei_B = '↑';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1.1;
               seikaku_hosei_C = 1;
@@ -678,6 +729,8 @@
               seikaku_hosei_S = 0.9;
             break;
             default:
+              hosei_B = '↑';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1.1;
               seikaku_hosei_C = 1;
@@ -689,6 +742,8 @@
         case "C":
           switch(minus){
             case "A":
+              hosei_B = '';
+              hosei_D = '';
               seikaku_hosei_A = 0.9;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1.1;
@@ -696,6 +751,8 @@
               seikaku_hosei_S = 1;
             break;
             case "B":
+              hosei_B = '↓';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 0.9;
               seikaku_hosei_C = 1.1;
@@ -703,6 +760,8 @@
               seikaku_hosei_S = 1;
             break;
             case "D":
+              hosei_B = '';
+              hosei_D = '↓';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1.1;
@@ -710,6 +769,8 @@
               seikaku_hosei_S = 1;
             break;
             case "S":
+              hosei_B = '';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1.1;
@@ -717,6 +778,8 @@
               seikaku_hosei_S = 0.9;
             break;
             default:
+              hosei_B = '';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1.1;
@@ -728,6 +791,8 @@
         case "D":
           switch(minus){
             case "A":
+              hosei_B = '';
+              hosei_D = '↑';
               seikaku_hosei_A = 0.9;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1;
@@ -735,6 +800,8 @@
               seikaku_hosei_S = 1;
             break;
             case "B":
+              hosei_B = '↓';
+              hosei_D = '↑';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 0.9;
               seikaku_hosei_C = 1;
@@ -742,6 +809,8 @@
               seikaku_hosei_S = 1;
             break;
             case "C":
+              hosei_B = '';
+              hosei_D = '↑';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 0.9;
@@ -749,6 +818,8 @@
               seikaku_hosei_S = 1;
             break;
             case "S":
+              hosei_B = '';
+              hosei_D = '↑';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1;
@@ -756,6 +827,8 @@
               seikaku_hosei_S = 0.9;
             break;
             default:
+              hosei_B = '';
+              hosei_D = '↑';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1;
@@ -767,6 +840,8 @@
         case "S":
           switch(minus){
             case "A":
+              hosei_B = '';
+              hosei_D = '';
               seikaku_hosei_A = 0.9;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1;
@@ -774,6 +849,8 @@
               seikaku_hosei_S = 1.1;
             break;
             case "B":
+              hosei_B = '↓';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 0.9;
               seikaku_hosei_C = 1;
@@ -781,6 +858,8 @@
               seikaku_hosei_S = 1.1;
             break;
             case "C":
+              hosei_B = '';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 0.9;
@@ -788,6 +867,8 @@
               seikaku_hosei_S = 1.1;
             break;
             case "D":
+              hosei_B = '';
+              hosei_D = '↓';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1;
@@ -795,6 +876,8 @@
               seikaku_hosei_S = 1.1;
             break;
             default:
+              hosei_B = '';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1;
@@ -806,6 +889,8 @@
         default:
           switch(minus){
             case "A":
+              hosei_B = '';
+              hosei_D = '';
               seikaku_hosei_A = 0.9;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1;
@@ -813,6 +898,8 @@
               seikaku_hosei_S = 1;
             break;
             case "B":
+              hosei_B = '↓';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 0.9;
               seikaku_hosei_C = 1;
@@ -820,6 +907,8 @@
               seikaku_hosei_S = 1;
             break;
             case "C":
+              hosei_B = '';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 0.9;
@@ -827,6 +916,8 @@
               seikaku_hosei_S = 1;
             break;
             case "D":
+              hosei_B = '';
+              hosei_D = '↓';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1;
@@ -834,6 +925,8 @@
               seikaku_hosei_S = 1;
             break;
             case "S":
+              hosei_B = '';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1;
@@ -841,6 +934,8 @@
               seikaku_hosei_S = 0.9;
             break;
             default:
+              hosei_B = '';
+              hosei_D = '';
               seikaku_hosei_A = 1;
               seikaku_hosei_B = 1;
               seikaku_hosei_C = 1;
@@ -861,7 +956,9 @@
       doryokuti = $('#doryokuti_text_B').val();
       jisuti_status_B = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_B), Number(seikaku_hosei_B));
       $('#jisuti_text_B').val(jisuti_status_B);
-      $('#endurance_status_B').text(jisuti_status_B);
+      $('#endurance_status_B').text(
+        jisuti_status_B + '(' + $('#doryokuti_text_B').val() + hosei_B + ')'
+      );
       calcAllEnduranceResult();
 
       doryokuti = $('#doryokuti_text_C').val();
@@ -871,7 +968,9 @@
       doryokuti = $('#doryokuti_text_D').val();
       jisuti_status_D = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_D), Number(seikaku_hosei_D));
       $('#jisuti_text_D').val(jisuti_status_D);
-      $('#endurance_status_D').text(jisuti_status_D);
+      $('#endurance_status_D').text(
+        jisuti_status_D + '(' + $('#doryokuti_text_D').val() + hosei_D + ')'
+      );
       calcAllEnduranceResult();
 
       doryokuti = $('#doryokuti_text_S').val();
@@ -889,24 +988,24 @@
     function calcAtkEndurance(){
       var status_H;
       var status_B;
-      status_H = Number($('#endurance_status_H').text());
-      status_B = Number($('#endurance_status_B').text());
+      status_H = Number($('#jisuti_text_H').val());
+      status_B = Number($('#jisuti_text_B').val());
       $('#endurance_result_atk').text(Number(status_H * status_B));
     }
     function calcSpAtkEndurance(){
       var status_H;
       var status_D;
-      status_H = Number($('#endurance_status_H').text());
-      status_D = Number($('#endurance_status_D').text());
+      status_H = Number($('#jisuti_text_H').val());
+      status_D = Number($('#jisuti_text_D').val());
       $('#endurance_result_spatk').text(Number(status_H * status_D));
     }
     function calcTotalEndurance(){
       var status_H;
       var status_B;
       var status_D;
-      status_H = Number($('#endurance_status_H').text());
-      status_B = Number($('#endurance_status_B').text());
-      status_D = Number($('#endurance_status_D').text());
+      status_H = Number($('#jisuti_text_H').val());
+      status_B = Number($('#jisuti_text_B').val());
+      status_D = Number($('#jisuti_text_D').val());
       $('#endurance_result_total').text(Number(status_H*status_B) + Number(status_H*status_D));
     }
 
