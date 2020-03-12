@@ -132,7 +132,53 @@
     <div id="other_option">
 
     </div>
-
+    <div id="endurance_orig" style="padding: 10px; width:300px; height: 100px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+      <p>
+        H:<font id="endurance_status_H">0</font>
+      </p>
+      <p>
+        B:<font id="endurance_status_B">0</font>
+      </p>
+      <p>
+        D:<font id="endurance_status_D">0</font>
+      </p>
+      <div>
+        <p>
+          物理耐久:<font id="endurance_result_atk">---</font>
+        </p>
+        <p>
+          特殊耐久:<font id="endurance_result_spatk">---</font>
+        </p>
+        <p>
+          総合耐久:<font id="endurance_result_total">---</font>
+        </p>
+      </div>
+    </div>
+    <div id="endurance_copy" style="padding: 10px; width:300px; height: 100px; margin-bottom: 10px; border: 1px dotted rgb(69, 104, 199); border-radius: 10px;">
+      <p>
+        H:<font id="endurance_status_H_copy">0</font>
+      </p>
+      <p>
+        B:<font id="endurance_status_B_copy">0</font>
+      </p>
+      <p>
+        D:<font id="endurance_status_D_copy">0</font>
+      </p>
+      <div>
+        <p>
+          物理耐久:<font id="endurance_result_atk_copy">---</font>
+        </p>
+        <p>
+          特殊耐久:<font id="endurance_result_spatk_copy">---</font>
+        </p>
+        <p>
+          総合耐久:<font id="endurance_result_total_copy">---</font>
+        </p>
+      </div>
+    </div>
+    <div id="copy_button_space">
+      <button id="copy_endurance">↓ copy ↓</button>
+    </div>
 
     </div>
 
@@ -179,6 +225,31 @@
       position: absolute;
       top: 50px;
       left: 15px;
+    }
+    #endurance_orig {
+      position: absolute;
+      top: 325px;
+      left: 50px;
+    }
+    div#endurance_orig div {
+      position: relative;
+      bottom: 87px;
+      left: 80px
+    }
+    #endurance_copy {
+      position: absolute;
+      top: 500px;
+      left: 50px
+    }
+    div#endurance_copy div {
+      position: relative;
+      bottom: 87px;
+      left: 80px;
+    }
+    #copy_button_space {
+      position: absolute;
+      top: 460px;
+      left: 180px;
     }
 
     p.input_muburi_status input {
@@ -231,6 +302,13 @@
     p.jisuti_spinbutton {
       margin: 5px;
     }
+    div#endurance_orig p {
+      margin: 5px;
+    }
+    div#endurance_copy p {
+      margin: 5px;
+    }
+
 
 
 
@@ -270,6 +348,8 @@
       $(this).val(syuzokuti_H);
       calcJisuti_H(Number($('#doryokuti_text_H').val()));
       $('#jisuti_text_H').val(jisuti_status_H);
+      $('#endurance_status_H').text(jisuti_status_H);
+      calcAllEnduranceResult();
     })
     $('#syuzokuti_text_A').change(function(){
       var val = $(this).val();
@@ -292,6 +372,8 @@
       $(this).val(syuzokuti_B);
       jisuti_status_B = calcJisuti_ABCDS(Number($('#doryokuti_text_B').val()), Number(syuzokuti_B), Number(seikaku_hosei_B));
       $('#jisuti_text_B').val(jisuti_status_B);
+      $('#endurance_status_B').text(jisuti_status_B);
+      calcAllEnduranceResult();
     })
     $('#syuzokuti_text_C').change(function(){
       var val = $(this).val();
@@ -314,6 +396,8 @@
       $(this).val(syuzokuti_D);
       jisuti_status_D = calcJisuti_ABCDS(Number($('#doryokuti_text_D').val()), Number(syuzokuti_D), Number(seikaku_hosei_D));
       $('#jisuti_text_D').val(jisuti_status_D);
+      $('#endurance_status_D').text(jisuti_status_D);
+      calcAllEnduranceResult();
     })
     $('#syuzokuti_text_S').change(function(){
       var val = $(this).val();
@@ -333,6 +417,8 @@
       var doryokuti = $(this).val();
       calcJisuti_H(Number(doryokuti));
       $('#jisuti_text_H').val(Number(jisuti_status_H));
+      $('#endurance_status_H').text(jisuti_status_H);
+      calcAllEnduranceResult();
     });
     $('#doryokuti_text_A').change(function(){
       $('#remain').text(Number(calcRemain()));
@@ -345,6 +431,8 @@
       var doryokuti = $(this).val();
       jisuti_status_B = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_B), Number(seikaku_hosei_B));
       $('#jisuti_text_B').val(jisuti_status_B);
+      $('#endurance_status_B').text(jisuti_status_B);
+      calcAllEnduranceResult();
     });
     $('#doryokuti_text_C').change(function(){
       $('#remain').text(Number(calcRemain()));
@@ -357,6 +445,8 @@
       var doryokuti = $(this).val();
       jisuti_status_D = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_D), Number(seikaku_hosei_D));
       $('#jisuti_text_D').val(jisuti_status_D);
+      $('#endurance_status_D').text(jisuti_status_D);
+      calcAllEnduranceResult();
     });
     $('#doryokuti_text_S').change(function(){
       $('#remain').text(Number(calcRemain()));
@@ -388,12 +478,16 @@
       $('#remain').text(Number(calcRemain()));
       calcJisuti_H(Number(0));
       $('#jisuti_text_H').val(jisuti_status_H);
+      $('#endurance_status_H').text(jisuti_status_H);
+      calcAllEnduranceResult();
     });
     $('#doryokuti_kyokuburi_H').click(function(){
       $('#doryokuti_text_H').val(Number(252));
       $('#remain').text(Number(calcRemain()));
       calcJisuti_H(Number(252));
       $('#jisuti_text_H').val(jisuti_status_H);
+      $('#endurance_status_H').text(jisuti_status_H);
+      calcAllEnduranceResult();
     });
     $('#doryokuti_reset_A').click(function(){
       $('#doryokuti_text_A').val(Number(0));
@@ -412,12 +506,16 @@
       $('#remain').text(Number(calcRemain()));
       jisuti_status_B = calcJisuti_ABCDS(Number(0), Number(syuzokuti_B), Number(seikaku_hosei_B));
       $('#jisuti_text_B').val(jisuti_status_B);
+      $('#endurance_status_B').text(jisuti_status_B);
+      calcAllEnduranceResult();
     });
     $('#doryokuti_kyokuburi_B').click(function(){
       $('#doryokuti_text_B').val(Number(252));
       $('#remain').text(Number(calcRemain()));
       jisuti_status_B = calcJisuti_ABCDS(Number(252), Number(syuzokuti_B), Number(seikaku_hosei_B));
       $('#jisuti_text_B').val(jisuti_status_B);
+      $('#endurance_status_B').text(jisuti_status_B);
+      calcAllEnduranceResult();
     });
     $('#doryokuti_reset_C').click(function(){
       $('#doryokuti_text_C').val(Number(0));
@@ -436,12 +534,16 @@
       $('#remain').text(Number(calcRemain()));
       jisuti_status_D = calcJisuti_ABCDS(Number(0), Number(syuzokuti_D), Number(seikaku_hosei_D));
       $('#jisuti_text_D').val(jisuti_status_D);
+      $('#endurance_status_D').text(jisuti_status_D);
+      calcAllEnduranceResult();
     });
     $('#doryokuti_kyokuburi_D').click(function(){
       $('#doryokuti_text_D').val(Number(252));
       $('#remain').text(Number(calcRemain()));
       jisuti_status_D = calcJisuti_ABCDS(Number(252), Number(syuzokuti_D), Number(seikaku_hosei_D));
       $('#jisuti_text_D').val(jisuti_status_D);
+      $('#endurance_status_D').text(jisuti_status_D);
+      calcAllEnduranceResult();
     });
     $('#doryokuti_reset_S').click(function(){
       $('#doryokuti_text_S').val(Number(0));
@@ -759,6 +861,8 @@
       doryokuti = $('#doryokuti_text_B').val();
       jisuti_status_B = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_B), Number(seikaku_hosei_B));
       $('#jisuti_text_B').val(jisuti_status_B);
+      $('#endurance_status_B').text(jisuti_status_B);
+      calcAllEnduranceResult();
 
       doryokuti = $('#doryokuti_text_C').val();
       jisuti_status_C = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_C), Number(seikaku_hosei_C));
@@ -767,13 +871,54 @@
       doryokuti = $('#doryokuti_text_D').val();
       jisuti_status_D = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_D), Number(seikaku_hosei_D));
       $('#jisuti_text_D').val(jisuti_status_D);
+      $('#endurance_status_D').text(jisuti_status_D);
+      calcAllEnduranceResult();
 
       doryokuti = $('#doryokuti_text_S').val();
       jisuti_status_S = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_S), Number(seikaku_hosei_S));
       $('#jisuti_text_S').val(jisuti_status_S);
     });
 
+    //結果の表示
+    function calcAllEnduranceResult(){
+      // console.log($('#endurance_status_H').text());
+      calcAtkEndurance();
+      calcSpAtkEndurance();
+      calcTotalEndurance();
+    }
+    function calcAtkEndurance(){
+      var status_H;
+      var status_B;
+      status_H = Number($('#endurance_status_H').text());
+      status_B = Number($('#endurance_status_B').text());
+      $('#endurance_result_atk').text(Number(status_H * status_B));
+    }
+    function calcSpAtkEndurance(){
+      var status_H;
+      var status_D;
+      status_H = Number($('#endurance_status_H').text());
+      status_D = Number($('#endurance_status_D').text());
+      $('#endurance_result_spatk').text(Number(status_H * status_D));
+    }
+    function calcTotalEndurance(){
+      var status_H;
+      var status_B;
+      var status_D;
+      status_H = Number($('#endurance_status_H').text());
+      status_B = Number($('#endurance_status_B').text());
+      status_D = Number($('#endurance_status_D').text());
+      $('#endurance_result_total').text(Number(status_H*status_B) + Number(status_H*status_D));
+    }
 
+    //copyボタンを押したときの動作
+    $('#copy_endurance').click(function(){
+      $('#endurance_status_H_copy').text($('#endurance_status_H').text());
+      $('#endurance_status_B_copy').text($('#endurance_status_B').text());
+      $('#endurance_status_D_copy').text($('#endurance_status_D').text());
+      $('#endurance_result_atk_copy').text($('#endurance_result_atk').text());
+      $('#endurance_result_spatk_copy').text($('#endurance_result_spatk').text());
+      $('#endurance_result_total_copy').text($('#endurance_result_total').text());
+    })
 
   </script>
 </html>
