@@ -364,17 +364,18 @@
       jisuti_status_S = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_S), Number(seikaku_hosei_S));
       $('#jisuti_text_S').val(jisuti_status_S);
     });
-    function calcRemain(){
+    function calcRemain(){ //残り努力値の計算
       var giving;
       var remain;
       giving = Number($('#doryokuti_text_H').val()) + Number($('#doryokuti_text_A').val()) + Number($('#doryokuti_text_B').val()) + Number($('#doryokuti_text_C').val()) + Number($('#doryokuti_text_D').val()) + Number($('#doryokuti_text_S').val());
       remain = Number(510) - Number(giving);
       return remain;
     }
-    function calcJisuti_H(doryokuti){
+    function calcJisuti_H(doryokuti){ //H実数値の計算
       jisuti_status_H = Math.floor((syuzokuti_H*2 + 31 + doryokuti/4) * 1/2) + 50 + 10;
     }
     function calcJisuti_ABCDS(doryokuti, syuzokuti, seikaku_hosei){
+      //ABCDS実数値の計算
       jisuti_status = (Math.floor((syuzokuti*2 + 31 + doryokuti/4) * 1/2) + 5) * seikaku_hosei;
       jisuti_status = Math.floor(jisuti_status);
       return jisuti_status;
@@ -748,7 +749,31 @@
         break;
       }
       // console.log(seikaku_hosei_A +':'+ seikaku_hosei_B +':'+ seikaku_hosei_C +':'+ seikaku_hosei_D +':'+ seikaku_hosei_S);
-    })
+
+      //各実数値の再計算
+      var doryokuti = 0;
+      doryokuti = $('#doryokuti_text_A').val();
+      jisuti_status_A = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_A), Number(seikaku_hosei_A));
+      $('#jisuti_text_A').val(jisuti_status_A);
+
+      doryokuti = $('#doryokuti_text_B').val();
+      jisuti_status_B = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_B), Number(seikaku_hosei_B));
+      $('#jisuti_text_B').val(jisuti_status_B);
+
+      doryokuti = $('#doryokuti_text_C').val();
+      jisuti_status_C = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_C), Number(seikaku_hosei_C));
+      $('#jisuti_text_C').val(jisuti_status_C);
+
+      doryokuti = $('#doryokuti_text_D').val();
+      jisuti_status_D = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_D), Number(seikaku_hosei_D));
+      $('#jisuti_text_D').val(jisuti_status_D);
+
+      doryokuti = $('#doryokuti_text_S').val();
+      jisuti_status_S = calcJisuti_ABCDS(Number(doryokuti), Number(syuzokuti_S), Number(seikaku_hosei_S));
+      $('#jisuti_text_S').val(jisuti_status_S);
+    });
+
+
 
   </script>
 </html>
