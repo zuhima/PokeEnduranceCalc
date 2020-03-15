@@ -11,42 +11,43 @@ h5{
   margin:7px;
 }
 
+
 #doryokuti {
   position: absolute;
-  top: 50px;
+  top: 85px;
   left: 165px;
 }
 #status {
   position: absolute;
-  top: 50px;
+  top: 75px;
   left:85px;
 }
 #seikakuhosei_plus {
   position: absolute;
-  top:80px;
+  top:115px;
   left: 300px;
   background-color:rgb(248, 191, 255)
 }
 #seikakuhosei_minus {
   position: absolute;
-  top: 80px;
+  top: 115px;
   left: 320px;
   background-color: rgb(187, 243, 252);
 }
 #jisuti {
   position: absolute;
-  top: 50px;
+  top: 85px;
   left: 105px;
 }
 #syuzokuti {
   position: absolute;
-  top: 50px;
+  top: 85px;
   left: 35px;
 }
 #endurance_orig {
   background-color: rgb(255, 255, 255);
   position: absolute;
-  top: 325px;
+  top: 335px;
   left: 30px;
 }
 div#endurance_orig div {
@@ -67,7 +68,7 @@ div#endurance_copy div {
 }
 #copy_button_space {
   position: absolute;
-  top: 460px;
+  top: 470px;
   left: 160px;
 }
 #how_use {
@@ -92,6 +93,12 @@ div#endurance_copy div {
   left: 380px;
 }
 
+input#poke_name {
+  width: 150px;
+}
+input#poke_level {
+  width: 45px;
+}
 p.input_muburi_status input {
   width: 50px;
   height: 25px;
