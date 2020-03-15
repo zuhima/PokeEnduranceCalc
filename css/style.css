@@ -1,0 +1,150 @@
+body {
+  background-color: rgb(255, 220, 200);
+}
+h2 {
+  margin:5px;
+}
+h4{
+  margin:5px;
+}
+h5{
+  margin:7px;
+}
+
+#doryokuti {
+  position: absolute;
+  top: 50px;
+  left: 165px;
+}
+#status {
+  position: absolute;
+  top: 50px;
+  left:85px;
+}
+#seikakuhosei_plus {
+  position: absolute;
+  top:80px;
+  left: 300px;
+  background-color:rgb(248, 191, 255)
+}
+#seikakuhosei_minus {
+  position: absolute;
+  top: 80px;
+  left: 320px;
+  background-color: rgb(187, 243, 252);
+}
+#jisuti {
+  position: absolute;
+  top: 50px;
+  left: 105px;
+}
+#syuzokuti {
+  position: absolute;
+  top: 50px;
+  left: 35px;
+}
+#endurance_orig {
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 325px;
+  left: 30px;
+}
+div#endurance_orig div {
+  position: relative;
+  bottom: 87px;
+  left: 140px
+}
+#endurance_copy {
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 500px;
+  left: 30px
+}
+div#endurance_copy div {
+  position: relative;
+  bottom: 87px;
+  left: 140px;
+}
+#copy_button_space {
+  position: absolute;
+  top: 460px;
+  left: 160px;
+}
+#how_use {
+  position: absolute;
+  top: 650px;
+  left: 30px;
+}
+#auther {
+  font-size: 12px;
+}
+#licence {
+  font-size: 10px;
+}
+#motimono {
+  position:absolute;
+  top: 80px;
+  left: 380px;
+}
+#tokusei {
+  position: absolute;
+  top: 190px;
+  left: 380px;
+}
+
+p.input_muburi_status input {
+  width: 50px;
+  height: 25px;
+}
+p.doryokuti_spinbutton input{
+  width: 50px;
+  height: 25px;
+}
+p.doryokuti_spinbutton button{
+  height:25px;
+}
+p.button_hosei_plus {
+  height: 25px;
+}
+p.button_hosei_minus {
+  height: 25px;
+}
+p.jisuti_spinbutton input {
+  height: 25px;
+  width: 50px;
+}
+p.input_syuzokuti input {
+  height: 25px;
+  width: 45px;
+}
+
+p.input_muburi_status {
+  margin: 5px;
+}
+p.input_syuzokuti {
+  margin: 5px;
+}
+p.doryokuti_spinbutton {
+  margin: 5px;
+}
+p.button_hosei_plus {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+p.button_hosei_minus {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+p.doryokuti_spinbutton font {
+  margin: 5px;
+  font-size: 15px;
+}
+p.jisuti_spinbutton {
+  margin: 5px;
+}
+div#endurance_orig p {
+  margin: 5px;
+}
+div#endurance_copy p {
+  margin: 5px;
+}
