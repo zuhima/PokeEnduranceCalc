@@ -25,6 +25,9 @@ var seikaku_hosei_S = 1;
 var hosei_B = '';
 var hosei_D = '';
 
+//レベル設定変数
+var level = 50;
+
 //種族値入力時の動作
 $('#syuzokuti_text_H').change(function(){
   var val = $(this).val();
@@ -162,15 +165,63 @@ function calcRemain(){ //残り努力値の計算
   return remain;
 }
 function calcJisuti_H(doryokuti){ //H実数値の計算
-  jisuti_status_H = Math.floor((syuzokuti_H*2 + 31 + doryokuti/4) * 1/2) + 50 + 10;
+  jisuti_status_H = Math.floor((syuzokuti_H*2 + 31 + doryokuti/4) * level/100) + level + 10;
 }
 function calcJisuti_ABCDS(doryokuti, syuzokuti, seikaku_hosei){
   //ABCDS実数値の計算
-  jisuti_status = (Math.floor((syuzokuti*2 + 31 + doryokuti/4) * 1/2) + 5) * seikaku_hosei;
+  jisuti_status = (Math.floor((syuzokuti*2 + 31 + doryokuti/4) * level/100) + 5) * seikaku_hosei;
   jisuti_status = Math.floor(jisuti_status);
   return jisuti_status;
 }
 
+//レベルが変更されたとき
+$('#poke_level').change(function(){
+  level = Number($(this).val());
+  calcJisuti_H(Number($('#doryokuti_text_H').val()));
+  $('#jisuti_text_H').val(jisuti_status_H);
+  jisuti_status_A = calcJisuti_ABCDS(Number($('#doryokuti_text_A').val()), Number(syuzokuti_A), Number(seikaku_hosei_A));
+  $('#jisuti_text_A').val(jisuti_status_A);
+  jisuti_status_B = calcJisuti_ABCDS(Number($('#doryokuti_text_B').val()), Number(syuzokuti_B), Number(seikaku_hosei_B));
+  $('#jisuti_text_B').val(jisuti_status_B);
+  jisuti_status_C = calcJisuti_ABCDS(Number($('#doryokuti_text_C').val()), Number(syuzokuti_C), Number(seikaku_hosei_C));
+  $('#jisuti_text_C').val(jisuti_status_C);
+  jisuti_status_D = calcJisuti_ABCDS(Number($('#doryokuti_text_D').val()), Number(syuzokuti_D), Number(seikaku_hosei_D));
+  $('#jisuti_text_D').val(jisuti_status_D);
+  jisuti_status_S = calcJisuti_ABCDS(Number($('#doryokuti_text_S').val()), Number(syuzokuti_S), Number(seikaku_hosei_S));
+  $('#jisuti_text_S').val(jisuti_status_S);
+});
+$('#level_fifty_button').click(function(){
+  level = 50;
+  $('#poke_level').val(50);
+  calcJisuti_H(Number($('#doryokuti_text_H').val()));
+  $('#jisuti_text_H').val(jisuti_status_H);
+  jisuti_status_A = calcJisuti_ABCDS(Number($('#doryokuti_text_A').val()), Number(syuzokuti_A), Number(seikaku_hosei_A));
+  $('#jisuti_text_A').val(jisuti_status_A);
+  jisuti_status_B = calcJisuti_ABCDS(Number($('#doryokuti_text_B').val()), Number(syuzokuti_B), Number(seikaku_hosei_B));
+  $('#jisuti_text_B').val(jisuti_status_B);
+  jisuti_status_C = calcJisuti_ABCDS(Number($('#doryokuti_text_C').val()), Number(syuzokuti_C), Number(seikaku_hosei_C));
+  $('#jisuti_text_C').val(jisuti_status_C);
+  jisuti_status_D = calcJisuti_ABCDS(Number($('#doryokuti_text_D').val()), Number(syuzokuti_D), Number(seikaku_hosei_D));
+  $('#jisuti_text_D').val(jisuti_status_D);
+  jisuti_status_S = calcJisuti_ABCDS(Number($('#doryokuti_text_S').val()), Number(syuzokuti_S), Number(seikaku_hosei_S));
+  $('#jisuti_text_S').val(jisuti_status_S);
+});
+$('#level_hundred_button').click(function(){
+  level = 100;
+  $('#poke_level').val(100);
+  calcJisuti_H(Number($('#doryokuti_text_H').val()));
+  $('#jisuti_text_H').val(jisuti_status_H);
+  jisuti_status_A = calcJisuti_ABCDS(Number($('#doryokuti_text_A').val()), Number(syuzokuti_A), Number(seikaku_hosei_A));
+  $('#jisuti_text_A').val(jisuti_status_A);
+  jisuti_status_B = calcJisuti_ABCDS(Number($('#doryokuti_text_B').val()), Number(syuzokuti_B), Number(seikaku_hosei_B));
+  $('#jisuti_text_B').val(jisuti_status_B);
+  jisuti_status_C = calcJisuti_ABCDS(Number($('#doryokuti_text_C').val()), Number(syuzokuti_C), Number(seikaku_hosei_C));
+  $('#jisuti_text_C').val(jisuti_status_C);
+  jisuti_status_D = calcJisuti_ABCDS(Number($('#doryokuti_text_D').val()), Number(syuzokuti_D), Number(seikaku_hosei_D));
+  $('#jisuti_text_D').val(jisuti_status_D);
+  jisuti_status_S = calcJisuti_ABCDS(Number($('#doryokuti_text_S').val()), Number(syuzokuti_S), Number(seikaku_hosei_S));
+  $('#jisuti_text_S').val(jisuti_status_S);
+});
 
 //努力値のボタンが押されたとき
 $('#doryokuti_reset_H').click(function(){

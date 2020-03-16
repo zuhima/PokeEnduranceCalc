@@ -36,29 +36,43 @@ SOFTWARE. -->
     <div>
       <h2>ポケモン耐久値 計算</h2>
     </div>
+    <div id="nameandlevel">
+      <!-- <input id="poke_name" type="text" /> -->
+      Lv<input id="poke_level" type="number" value="50" min="1" max="100" step="1" required />
+      <button id="level_fifty_button">50</button>
+      <button id="level-hundred-button">100</button>
+    </div>
+    <div id="habcds">
+      <p>H:<br /></p>
+      <p>A:<br /></p>
+      <p>B:<br /></p>
+      <p>C:<br /></p>
+      <p>D:<br /></p>
+      <p>S:<br /></p>
+    </div>
     <div id="syuzokuti">
-      <h4>種族値</h4>
+      <h5>種族値</h5>
       <p class="input_syuzokuti">
-        H:<input id="syuzokuti_text_H" type="text" value="0" />
+        <input id="syuzokuti_text_H" type="text" value="0" />
       </p>
       <p class="input_syuzokuti">
-        A:<input id="syuzokuti_text_A" type="text" value="0" />
+        <input id="syuzokuti_text_A" type="text" value="0" />
       </p>
       <p class="input_syuzokuti">
-        B:<input id="syuzokuti_text_B" type="text" value="0" />
+        <input id="syuzokuti_text_B" type="text" value="0" />
       </p>
       <p class="input_syuzokuti">
-        C:<input id="syuzokuti_text_C" type="text" value="0" />
+        <input id="syuzokuti_text_C" type="text" value="0" />
       </p>
       <p class="input_syuzokuti">
-        D:<input id="syuzokuti_text_D" type="text" value="0" />
+        <input id="syuzokuti_text_D" type="text" value="0" />
       </p>
       <p class="input_syuzokuti">
-        S:<input id="syuzokuti_text_S" type="text" value="0" />
+        <input id="syuzokuti_text_S" type="text" value="0" />
       </p>
     </div>
     <div id="doryokuti">
-      <h4>努力値</h4>
+      <h5>努力値</h5>
       <p class="doryokuti_spinbutton">
         <input id="doryokuti_text_H" type="number" min="0" max="252" value="0" step="4" required />
         <button id="doryokuti_reset_H">0</button>
@@ -134,7 +148,7 @@ SOFTWARE. -->
       </p>
     </div>
     <div id="jisuti">
-      <h4>実数値</h4>
+      <h5>実数値</h5>
       <p class="jisuti_spinbutton">
         <input id="jisuti_text_H" type="text" value="0" />
       </p>
@@ -228,7 +242,7 @@ SOFTWARE. -->
         3. 「メンドクサイ」という理由から，「ポケモン種族値自動入力機能」や「実数値から努力値の逆算機能」の実装予定はありません．ご了承ください.<br />
         4. このページは予告なく削除する場合があります．
       </p>
-      <font id="auther">Created By @null_cats</font>
+      <!-- <font id="auther">Created By @null_cats</font> -->
     </div>
 
     </div>
