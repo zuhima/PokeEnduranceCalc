@@ -8,10 +8,14 @@ h4{
   margin:5px;
 }
 h5{
-  margin:7px;
+  margin:5px;
 }
 
-
+#habcds {
+  position: absolute;
+  top: 110px;
+  left: 30px;
+}
 #doryokuti {
   position: absolute;
   top: 85px;
@@ -37,12 +41,12 @@ h5{
 #jisuti {
   position: absolute;
   top: 85px;
-  left: 105px;
+  left: 55px;
 }
 #syuzokuti {
   position: absolute;
   top: 85px;
-  left: 35px;
+  left: 115px;
 }
 #endurance_orig {
   background-color: rgb(255, 255, 255);
@@ -92,6 +96,11 @@ div#endurance_copy div {
   top: 190px;
   left: 380px;
 }
+#nameandlevel {
+  position: absolute;
+  top:60px;
+  left:55px;
+}
 
 input#poke_name {
   width: 150px;
@@ -125,6 +134,9 @@ p.input_syuzokuti input {
   width: 45px;
 }
 
+div#habcds p {
+  margin: 6px;
+}
 p.input_muburi_status {
   margin: 5px;
 }
